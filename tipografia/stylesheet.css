@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Hamlin';
+    src: url('Hamlin-Regular.eot');
+    src: local('Hamlin Regular'), local('Hamlin-Regular'),
+        url('Hamlin-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Hamlin-Regular.woff2') format('woff2'),
+        url('Hamlin-Regular.woff') format('woff'),
+        url('Hamlin-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hamlin';
+    src: url('Hamlin-Bold.eot');
+    src: local('Hamlin Bold'), local('Hamlin-Bold'),
+        url('Hamlin-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Hamlin-Bold.woff2') format('woff2'),
+        url('Hamlin-Bold.woff') format('woff'),
+        url('Hamlin-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hamlin';
+    src: url('Hamlin-Light.eot');
+    src: local('Hamlin Light'), local('Hamlin-Light'),
+        url('Hamlin-Light.eot?#iefix') format('embedded-opentype'),
+        url('Hamlin-Light.woff2') format('woff2'),
+        url('Hamlin-Light.woff') format('woff'),
+        url('Hamlin-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hamlin';
+    src: url('Hamlin-ExtraBold.eot');
+    src: local('Hamlin ExtraBold'), local('Hamlin-ExtraBold'),
+        url('Hamlin-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('Hamlin-ExtraBold.woff2') format('woff2'),
+        url('Hamlin-ExtraBold.woff') format('woff'),
+        url('Hamlin-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+

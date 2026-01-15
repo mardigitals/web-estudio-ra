@@ -1,0 +1,707 @@
+/* === 1. Fuentes === */
+
+
+@font-face {
+    font-family: 'Estudio Ra';
+    src: url('tipografia/Hamlin-Regular.ttf') format('truetype'); /* Cambiado a truetype para archivos .ttf */
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap; /* Esto evita que el texto desaparezca mientras carga la fuente */
+}
+
+@font-face {
+    font-family: 'Estudio Ra';
+    src: url('tipografia/Hamlin-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Estudio Ra';
+    src: url('tipografia/Hamlin-ExtraBold.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* === 2. Globales === */
+
+body {
+    font-family:'Estudio Ra', Arial, Helvetica;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+
+}
+
+body nav {
+    font-size: 1.35rem;
+}
+
+body main p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+
+/* Logo fijo centrado con tamaño relativo y responsive */
+body::before {
+    content: "";
+    position: fixed;
+    top: 52%; /* ajustado para bajarlo */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 8vw;   /* ancho relativo al viewport */
+    max-width: 300px;  /* límite máximo */
+    height: 8vw;
+    max-height: 300px; /* límite máximo */
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.1;
+}
+
+/* === 3. Layout y componentes === */
+
+/* Imagen header, max-height adaptable */
+.img-header {
+    width: 100%;
+    height: 100vh;   /* ocupa la altura de la pantalla */
+    object-fit: cover;
+}
+
+
+
+.logo-nav {
+    width: 125px !important;  /* tamaño visible en desktop */
+    height: auto !important;   /* mantiene proporción */
+    flex-shrink: 0;            /* evita que flexbox lo reduzca */
+}
+
+.logo-footer {
+    width: fit-content;
+    max-width: 170px; 
+    height: auto;
+    margin-right: 1rem; /* espacio a la derecha */
+    margin-bottom: 3rem; /* espacio arriba */;
+}
+
+.logo-developed {
+    width: 8rem;
+    max-width: 85px;
+    height: auto;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 0.25rem; /* Equivalente a me-1 de Bootstrap */
+    text-decoration: none !important;
+}
+
+/* Iconos con tamaño responsive */
+.icono-instagram, .icono-whatsapp {
+    font-size: 3rem;  /* unidad relativa */
+}
+
+.icono-instagram {
+    color: #e4405f;
+}
+
+.icono-whatsapp {
+    color: #25d366;
+}
+
+h1.display-4 {
+    font-family: 'Estudio Ra', sans-serif; /* tu tipografía */
+    font-weight: 400;                      /* peso normal para "estudio" */
+}
+
+h1.display-4 strong {
+    font-weight: 900;                      /* ExtraBold para "RA" */
+}
+.header-home {
+    height: 100vh; /* ocupa toda la altura del viewport */
+    width: 100%;    /* asegúrate de que cubra todo el ancho */
+    background-image: url('/imagenes/1-home/hero.jpeg');
+    background-size: cover;   /* cubre el contenedor sin distorsión */
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    
+}
+
+/* Logo central en el header */
+ /* Logo oculto inicialmente */
+.logo-central {
+    max-width: 100%;
+    height: auto;
+    max-width: 420px; /* límite máximo para no crecer demasiado */
+    margin-bottom: -2rem; /* ajusta según sea necesario */
+    margin-top: -14rem; /* ajusta según sea necesario */
+    opacity: 0;
+    transform: scale(0.9); /* un poco más chico para dar efecto */
+    animation: fadeIn 2s ease forwards;
+}
+
+
+.titulo-central {
+    opacity: 0;
+    transform: scale(0.8); /* un poco más chico para dar efecto */
+    animation: fadeIn 2s ease forwards;
+}
+
+/* --- ESTILO PARA DESAPARECER CON EL SCROLL en servicios --- */
+.desliza-central.hide-on-scroll {
+    opacity: 0 !important; /* Desaparece */
+    transform: translateY(-100px); /* Sube 100px */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transición suave */
+}
+
+.hero-proyectos {
+    background-position: center;           /* centra la imagen */
+    background-size: cover;                /* ajusta para cubrir todo el contenedor */
+    background-repeat: no-repeat;          /* evita repetición si la imagen es más chica */
+    position: relative;
+    content-visibility: auto;              /* mejora el rendimiento de la carga */
+}
+
+.boton-ppal-proyectos-servicios {
+    content-visibility: auto;              /* mejora el rendimiento de la carga */
+    max-width: 100%;
+    height: auto;
+    max-width: 600px; /* límite máximo para no crecer demasiado */
+    margin-bottom: -2rem; /* ajusta según sea necesario */
+    margin-top: -14rem; /* ajusta según sea necesario */
+    opacity: 0;
+    transform: scale(0.4); /* un poco más chico para dar efecto */
+    animation: fadeIn 2s ease forwards;
+}
+
+.hero-nosotros {
+  min-height: 100vh;                     /* altura completa del viewport */
+  background-image: url('/imagenes/2-sobre-nosotros/templora.jpg'); /* ruta a tu imagen */
+  background-position: center;           /* centra la imagen */
+  background-size: cover;                /* ajusta para cubrir todo el contenedor */
+  background-repeat: no-repeat;          /* evita repetición si la imagen es más chica */
+  position: relative;
+  content-visibility: auto;              /* mejora el rendimiento de la carga */
+}
+
+.hero-home {
+    min-height: 100vh;                     /* altura completa del viewport */
+    background-image: url('/imagenes/1-home/abstractos-gris.jpg'); /* ruta a tu imagen */
+    background-position: center;           /* centra la imagen */
+    background-size: cover;                /* ajusta para cubrir todo el contenedor */
+    background-repeat: no-repeat;          /* evita repetición si la imagen es más chica */
+    position: relative;
+    content-visibility: auto;              /* mejora el rendimiento de la carga */
+}
+
+/* Estado inicial oculto del section - home */
+.container-appear {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Estado visible (cuando entra en viewport) del section-home */
+.container-appear.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Section Perfil con foto */
+.perfil-img {
+  max-height: 100vh;   /* nunca más grande que la altura de la pantalla */
+  width: auto;
+  height: auto;
+  border-radius: 12px; /* opcional */
+}
+
+.ubicacion-estudio {
+  height: 50%;
+  width: 60%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#navppal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 0.2rem;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)) !important;
+  backdrop-filter: blur(2px); 
+  z-index: 1050;
+}
+
+#navppal-dissaper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 0.2rem;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)) !important;
+  backdrop-filter: blur(2px); 
+  z-index: 1050;
+}
+
+
+#navppal .nav-link,
+#navppal-dissaper .nav-link {
+    font-weight: 900 !important ; /* ExtraBold */ 
+}
+
+#navinterno {
+  line-height: 1;
+  font-size: 1.10rem;
+  background: linear-gradient(to bottom, rgba(70, 66, 66, 0.9), rgba(255, 255, 255, 0.05)) !important;
+  backdrop-filter: blur(2px);
+  position: fixed !important; /* Hacemos que se pueda pegar */
+}
+
+#navinterno .nav-link {
+  color: black;
+  background-color: rgba(0, 0, 0, 0.005);
+}
+
+
+/* Servicios imagenes */
+
+.img-servicios {
+ 
+  max-height: 40vh; /* La imagen no superará el 40% de la altura del viewport */
+  width: auto;      /* Mantiene la proporción de la imagen */
+  object-fit: contain; /* Asegura que la imagen completa sea visible */
+  margin: 0 auto;   /* Centra la imagen si el ancho es menor */
+}
+
+/* --- SERVICIOS -- Efecto Botón 3D Dinámico (Pressable Button) --- */
+
+/* --- Botón 3D con Inclinación Dinámica (CSS Puro) --- */
+
+.btn-grey-3d {
+    /* Variables CSS para facilitar ajustes de color y tamaño */
+    --main-color: #55555573; /* Color principal del botón (Gris oscuro) */
+    --shadow-color: #3333339a; /* Color de la sombra/lateral (Más oscuro) */
+    --shadow-depth: 7px; /* Profundidad del efecto 3D */
+    
+    /* Propiedades de estilo base */
+    background-color: var(--main-color) !important;
+    color: white !important;
+    letter-spacing: 1px;
+    border: none !important;
+    cursor: pointer;
+    
+    /* Habilitamos el contexto 3D y la posición relativa */
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* El elemento que crea la "pared" lateral 3D */
+.btn-grey-3d::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Aplicamos el color de la sombra y el desplazamiento */
+    background-color: var(--shadow-color);
+    transform: translate3d(0, var(--shadow-depth), -1px); /* Mueve hacia abajo y hacia atrás (3D) */
+    border-radius: inherit; /* Hereda el redondeo del botón */
+    transition: transform 0.3s;
+    z-index: -1;
+}
+
+/* Estado al pasar el ratón (Hover) */
+.btn-grey-3d:hover {
+    /* Inclinación sutil del botón (efecto dinámico moderno) */
+    transform: rotateX(13deg) skewX(-6deg);
+}
+
+/* Estado al hacer clic (Active/Presionado) */
+.btn-grey-3d:active {
+    /* Hacemos que la parte superior baje, simulando la presión */
+    transform: translate3d(0, var(--shadow-depth), 0);
+}
+
+/* Desplazamiento de la pared 3D al hacer clic */
+.btn-grey-3d:active::after {
+    /* La pared 3D se oculta o "desaparece" */
+    transform: translate3d(0, 0, -1px);
+}
+
+/* --- Estilo de Separador Moderno (hr.barra) --- */
+
+.barra {
+    border: none; /* Quitamos el borde por defecto de hr */
+    height: 8px; /* Establecemos una altura muy fina */
+    
+    /* Degradado sutil para un look suave y moderno */
+    background-image: linear-gradient(to right, 
+        rgba(0, 0, 0, 0), /* Inicia transparente */
+        rgba(0, 0, 0, 1), /* Centro gris sutil */
+        rgba(0, 0, 0, 0) /* Termina transparente */
+    );
+    
+    /* Controlamos el espacio vertical */
+    margin: 40px 0; /* 40px arriba y abajo */
+}
+   
+
+
+/* Estilos para el carrusel del HOME*/
+
+/* Estilo de las imágenes del carrusel */
+.img-carousel {
+  border-radius: 1rem;
+  height: 70vh;
+  object-fit: contain; /* evita cortes y zoom */
+  /* padding: 0 1rem;     espacio lateral */
+  background-color: #f8f8f8; /* opcional, relleno si hay espacio */
+}
+
+
+/* Transición suave para fade */
+.carousel-fade .carousel-item {
+  transition: opacity 0.8s ease-in-out; /* Duración del fade */
+}
+
+/* Evita que el contenedor interno rompa el fade */
+.carousel-inner {
+  width: 100%;
+}
+
+.card-body {
+  display: flex !important;
+  flex-direction: column !important;
+   height: 100% !important;
+}
+
+.card-body .btn {
+  margin-top: auto !important;  /* empuja el botón al fondo */
+}
+
+.card-img-top {
+  height: 180px;   /* o el alto que quieras */
+  object-fit: cover;
+}
+
+
+.footer-home {
+    background: linear-gradient(to top, rgba(237, 243, 140, 0.8), rgba(255, 255, 255, 0.815)) !important; /* más opaco */
+    padding: 1rem 2rem;               
+    transition: all 0.4s ease; /* para que cambios al hover sean suaves si los agregás */
+    text-decoration: none !important;
+}
+
+
+.footer-home .d-flex {
+  align-items: center;  
+  gap: 1rem;            
+  flex-wrap: wrap;       /* permite que título y logo bajen en pantallas muy chicas */
+}
+
+.footer-home a {
+    text-decoration: none !important; /* Elimina el azul y los punteados */
+    color: #212529 !important;      /* Mantiene el negro profesional */
+    transition: opacity 0.3s ease;
+}
+
+.footer-home a:hover {
+    opacity: 0.7;                   /* Efecto visual al tocar sin usar subrayado */
+    text-decoration: underline !important; /* Solo aparece el subrayado si el usuario está encima */
+}
+
+
+
+/* Terminos y condiciones footer */
+
+.fs-7-custom {
+  font-size: 0.75rem; /* texto */
+}
+
+.fs-icon-small {
+  font-size: 0.9rem; /* ícono */
+  vertical-align: middle; /* para que quede centrado con el texto */
+}
+
+/* Contenedor Proyectos card */
+.image-fader-container {
+  position: relative;
+  width: 100%;
+  /* Relación de aspecto, ajusta esto a las dimensiones de tus imágenes */
+  padding-bottom: 75%; /* Ejemplo 4:3. Si es 16:9 usa 56.25%; si es 1:1 usa 100%; */
+  overflow: hidden;
+} 
+
+/* Estilos comunes para ambas imágenes DE PROYECTOS */
+
+ .image-fader-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Para asegurar que la imagen cubre el área sin distorsionarse */
+  transition: opacity 0.3s ease;
+} 
+
+/* Asegura una transición suave en el card base DE PROYECTOS*/
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 1. La CARD se agranda y la sombra se intensifica */
+.card:hover {
+    /* Mueve la tarjeta ligeramente hacia adelante (efecto 3D) */
+    transform: scale(1.03) translateY(-3px); 
+    /* Sombra más profunda para dar sensación de 'levantamiento' */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 2. La IMAGEN dentro de la CARD se opaca */
+/* Esto apunta a la imagen dentro del contenedor fader */
+.card:hover .image-fader-container img {
+    /* Reduce la opacidad para que parezca 'apagada' o menos prominente */
+    opacity: 0.8; 
+    /* Añade transición a la opacidad de la imagen para que sea suave */
+    transition: opacity 0.3s ease;
+}
+
+/* --- CAROUSEL DE PROYECTOS MODALES (GENERAL) --- */
+
+    .carousel-modales {
+        /* Altura del carrusel al 70% de la pantalla */
+        height: 70vh; 
+    }
+
+    .carousel-modales .carousel-item {
+        /* El ítem debe ocupar el 100% de la altura de su padre */
+        height: 100%; 
+    }
+
+    .carousel-modales img {
+        /* La imagen se ajusta sin deformarse */
+        object-fit: contain; 
+        height: 100%;
+        width: 100%;
+    }
+
+    /* --- ESTILOS ESPECÍFICOS PARA VIDEO --- */
+
+    /* Esta clase va en el carousel-inner */
+    .carousel-con-video {
+        height: auto !important; 
+        min-height: 50vh;
+    }
+
+    /* Aseguramos que el contenedor de video respete el ancho del modal */
+    .video-wrapper {
+        padding: 20px; 
+        background-color: #000;
+    }
+
+    /* Las imágenes dentro de este carrusel mantienen el estándar */
+    .carousel-con-video .carousel-item img {
+        height: 70vh !important;
+        object-fit: contain; 
+        background-color: #f8f8f8; 
+    }
+
+    /* El VIDEO (ratio) se ajusta a su proporción 16:9 */
+    .carousel-con-video .carousel-item .ratio {
+        height: auto; 
+    }
+
+    /* --- CONTROL DINÁMICO DE FLECHAS (SOLO VIDEO OFF) --- */
+
+    /* Ocultamos las flechas SOLO cuando el primer item (el video) tiene la clase .active.
+       Si pasas a la imagen 2, la condición ":has(.carousel-item:first-child.active)" 
+       deja de cumplirse y las flechas aparecen solas.
+    */
+    .carousel-con-video:has(.carousel-item:first-child.active) ~ .carousel-control-prev,
+    .carousel-con-video:has(.carousel-item:first-child.active) ~ .carousel-control-next {
+        display: none !important;
+        pointer-events: none !important;
+    }
+
+    /* Estilo opcional para que las flechas se vean mejor sobre las fotos 
+       cuando sí aparecen (después de la imagen 1) 
+    */
+    .carousel-control-prev,
+    .carousel-control-next {
+        z-index: 5;
+    }
+
+/* === 4. Animaciones === */
+
+/* Animación logo-central y titulo-central */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Definición de la animación para la imagen "ANTES" (desaparece) */
+@keyframes fadeOutInOnce {
+  0% { opacity: 1; } /* Empieza visible */
+  50% { opacity: 1; } /* Se mantiene visible por un tiempo */
+  100% { opacity: 0; } /* Termina oculta */
+}
+
+/* Definición de la animación para la imagen "DESPUÉS" (aparece) */
+@keyframes fadeInOutOnce {
+  0% { opacity: 0; } /* Empieza oculta */
+  50% { opacity: 0; } /* Se mantiene oculta por un tiempo */
+  100% { opacity: 1; } /* Termina visible */
+}
+
+/* === 5. Media queries === */
+
+/* MQ para ajustar tamaños en pantallas chicas */
+@media (max-width: 768px) {
+    body::before {
+        width: 40vw;
+        height: 40vw;
+        max-width: none;
+        max-height: none;
+        top: 80%;
+    }
+
+    .logo-superpuesto {
+        max-width: 50%;
+    }
+
+    .logo-nav {
+        width: 80px !important;
+        height: auto !important;
+    }
+
+    .logo-central {
+        /* Mantiene el centrado de base */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+
+        /* EL AJUSTE QUE BUSCÁS: */
+        /* Movemos el logo  hacia la izquierda */
+        transform: translateX(-5%) scale(0.9); 
+        
+        /* Aseguramos que no sea gigante en el celu */
+        max-width: 300px !important; 
+    }
+    
+   
+    .titulo-central {
+        font-size: 1.5rem !important; /* Ajusta el tamaño del texto */
+        margin-bottom: 4rem !important;
+    }
+
+   
+
+    .icono-instagram, .icono-whatsapp {
+        font-size: 2.5rem;
+    }
+
+    footer {
+        /* Bajamos el padding exagerado de 6rem a 1.5rem */
+        padding-right: 1.5rem !important; 
+        padding-left: 1.5rem !important;
+        padding-bottom: clamp(60px, 5vh, 120px);
+    }
+
+    /* Forzamos a que nada en el footer tenga subrayado "fantasma" */
+    footer a, 
+    footer h6, 
+    footer p,
+    footer span {
+        text-decoration: none !important;
+        border-bottom: none !important;
+        color: inherit !important;
+        box-shadow: none !important;
+    }
+    
+   .footer-home .d-flex {
+        flex-direction: row !important; 
+        flex-wrap: nowrap !important; /* Evita que el texto baje si no entra */
+        justify-content: flex-start !important;
+    }
+
+    .logo-footer {
+        max-width: 100px !important; /* Más chiquito para que entre el texto al lado */
+        margin-bottom: 0 !important; /* Quitamos el margen que lo separaba */
+        margin-right: 10px !important;
+    }
+
+
+    .logo-developed {
+        width: 4rem;
+        max-width: 50px;
+        height: auto;
+        object-fit: contain;
+        vertical-align: middle;
+        margin-right: 0.25rem; /* Equivalente a me-1 de Bootstrap */
+    }
+
+    .footer-home h2 {
+        font-size: 1rem !important; /* Achicamos la letra para que quepa en la misma línea */
+        white-space: nowrap; /* Evita que el nombre se divida en dos renglones */
+    }
+
+    aside figure {
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+
+    /* === SOLUCIÓN PARA #navinterno FIJO EN MÓVIL === */
+    #navinterno {
+        /* Fuerza la posición fija en la ventana gráfica */
+        position: sticky !important;
+        /* Asegura que se fije en la parte superior */
+        top: 0 !important;
+        /* Ocupa el ancho completo */
+        width: 100% !important; 
+        /* Colócalo por encima de todo el contenido */
+        z-index: 1030 !important; 
+        /* Reinicia los márgenes para que no haya espacios extra */
+        margin-bottom: 0 !important;
+    }
+    /* === FIN SOLUCIÓN FIJO EN MÓVIL === */
+
+    .ubicacion-estudio {
+        width: 100%; /* Ocupa todo el ancho en el celu */
+        padding: 0 15px; /* Un poquito de aire a los costados */
+    }
+    
+    .ubicacion-estudio .ratio {
+        --bs-aspect-ratio: 100%; /* Lo hacemos cuadrado en celu para que se vea más mapa */
+    }
+}
+
+/* Media Query para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .logo-superpuesto {
+        max-width: 70%;
+    }
+
+    footer {
+        padding-right: 7rem;
+    }
+}
+
+/* Media Query para pantallas grandes*/
+
+@media (min-width: 992px) {
+  #navinterno {
+    position: sticky !important;
+    top: 0;
+    z-index: 1020;
+  }
+}
